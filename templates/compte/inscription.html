@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+	{% load static %}
+
+	<!DOCTYPE html>
+	<html lang="en">
+	
+	<head>
+	  <meta charset="UTF-8">
+	  <link rel="stylesheet" href="{% static 'bootstrap/css_boot/bootstrap.min.css' %}">
+	  <link rel="stylesheet" href="{% static 'bootstrap/css_boot/all.min.css' %}">
+	  <link rel="stylesheet" href="{% static 'bootstrap/css_boot/style.css' %}">
+	  <link rel="preconnect" href="https://fonts.googleapis.com">
+	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,100;1,300&display=swap"
+		rel="stylesheet">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+
+	<style>
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: #b1ebe8 !important;
+		}
+		.user_card {
+			width: 650px;
+			margin-top: auto;
+			margin-bottom: auto;
+			background: #33d1cc;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+
+		}
+
+		.form_container {
+			margin-top: 20px;
+		}
+
+		#form-title{
+			color: #fff;
+			font-size: 40px;
+		}
+		.login_btn {
+			width: 100%;
+			background: #293ad3 !important;
+			color: white !important;
+			padding: 10px;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+		.input-group-text {
+			background: #f7ba5b !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+			height: 40px;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+
+		.input-group{
+			width: 500px;
+		}
+
+		.is-invalid{
+			border: 3px solid red;
+		}
+
+		.con{
+            margin-top: 60px;
+			margin-bottom: 60px;
+		}	
+
+	</style>
+
+
+</head>
+<body>
+
+	{% include 'base/header.html' %}	
+	<div class="container con">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<h3 id="form-title"><strong>Inscription</strong></h3>
+				</div>
+				<div class="col-md-12 mt-2">
+					{% if messages %}
+					{% for message in messages %}
+					<div class="alert alert-danger text-center"><strong>{{message}}</strong></div>
+					{% endfor %}
+					{% endif %}
+				</div>
+				<div class="d-flex justify-content-center form_container">
+
+					<form method="POST" action="/compte/inscription">
+						{% csrf_token %}
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" name="username" class="form-control {{errorchamps}} {{erroruser}}">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+							</div>
+							<input type="text" name="lastname" class="form-control {{errorchamps}}">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+							</div>
+							<input type="text" name="firstname" class="form-control {{errorchamps}}">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+							</div>
+							<input type="email" name="email" class="form-control {{errorchamps}} {{erroremail}}">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="password" name="password1" class="form-control {{errorchamps}} {{errorpass}}">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fa-solid fa-check-double"></i></i></span>
+							</div>
+							<input type="password" name="password2" class="form-control {{errorchamps}} {{errorpass}}">
+						</div>
+
+				   		<div class="d-flex justify-content-center mt-3 login_container">
+				 			<input class="btn login_btn rounded-pill" type="submit" value="S'inscrire">
+				   		</div>
+					</form>
+				</div>
+
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Avez-vous déjà un compte? <a href="{% url 'acces' %}" class="ml-2">Accès</a>
+					</div>
+				</div>
+			</div>
+		
+
+		</div>
+		
+	</div>
+	<script>
+						
+		var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder="Nom d'utilisateur..";
+		form_fields[2].placeholder='Nom..';
+		form_fields[3].placeholder='Prenom...';
+		form_fields[4].placeholder='Email..';
+		form_fields[5].placeholder='Mot de passe...';
+		form_fields[6].placeholder='Confirmer mot de passe...';
+
+
+		for (var field in form_fields){
+			form_fields[field].className += ' form-control'
+		}
+
+
+		$(document).ready(function(){
+			$('input').keyup(function(){
+				let textSaisie = $(this).val();
+				if(textSaisie == ""){
+					if(!$(this).hasClass('is-invalid')){
+						$(this).addClass('is-invalid');
+					}
+				} else {
+					$(this).removeClass('is-invalid');
+				}
+			})
+		})
+		
+	</script>
+	</script>
+
+	
+
+<script src="{% static 'bootstrap/js_boot/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'bootstrap/js_boot/all.min.js' %}"></script>
+</body>
+</html>
+
+{% include 'base/footer.html' %}
+
+

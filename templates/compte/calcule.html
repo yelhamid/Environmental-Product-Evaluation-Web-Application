@@ -1,0 +1,94 @@
+
+
+
+
+{% extends 'bare.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+  <style>
+    *{
+    padding: 0%;
+    margin: 0%;
+}
+
+article{
+  
+    background-position: center;
+    display: flex ;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+body{
+  height: auto;
+
+}
+
+
+
+/* .text{
+  margin-top: -50px;
+} */
+  
+
+
+.big{
+  padding-top: 20px;
+}
+ 
+.container-md{
+    background-color: white;
+}
+
+
+
+.main-btn{
+    background-color:#33d1cc;
+    color: #eff7fa;
+    padding: 0.7rem 1.7rem;
+}
+
+.main-btn:hover{
+    background-color: #ff3150;
+}
+
+
+  </style>
+  
+  <div class="container big">
+<article>
+  <div class="mt-6">
+  <img src="{% static 'img/14909.jpg' %}" class="mt-6" width="500">
+  </div>
+  <div class="text-center text mt-4">
+    {% if user.is_superuser %}
+    <h1 class="mb-4">Bienvenue {{user.first_name}} {{user.last_name}}, Vous pouvez gérer les données de l'application </h1>
+    {% else %}
+    <h1 class="mb-4">Bienvenue {{user.first_name}} {{user.last_name}} sur notre application web </h1>
+    {% endif %}
+    <h3 class="fs-6  mb-3">Plateforme numérique des données environnementales de produits mécanique</h3>
+  </div>
+
+  <!-- <p class="text"><h1>Platforme numérique des donnés </br></h1> 
+  <h1>environnementales de produits mécanique</h1>
+  <button  type="button" class="btn btn-warning" onclick="window.location.href = 'http://127.0.0.1:8000/compte/acces';">se connecter</button> -->
+</p>
+
+</article>
+</br>
+</div>
+
+
+
+
+
+ 
+{% endblock %}
+

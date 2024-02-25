@@ -1,0 +1,86 @@
+
+
+
+
+{% extends 'test.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+  <style>
+    *{
+    padding: 0%;
+    margin: 0%;
+}
+
+article{
+  
+    background-position: center;
+    display: flex ;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+body{
+  height: auto;
+
+}
+
+
+
+/* .text{
+  margin-top: -50px;
+} */
+  
+
+
+.big{
+  padding-top: 20px;
+}
+ 
+
+.container-md{
+    background-color: white;
+}
+
+
+
+.main-btn{
+    background-color:#33d1cc;
+    color: #eff7fa;
+    padding: 0.7rem 1.7rem;
+}
+
+.main-btn:hover{
+    background-color: #ff3150;
+}
+
+
+  </style>
+  
+  <div class="container big">
+<article>
+  <div class="mt-6">
+  <img src="{% static 'img/14909.jpg' %}" class="mt-6" width="500">
+  </div>
+  <div class="text-center text mt-4">
+    <h1>Bienvenue dans notre application web</h1>
+    <p class="fs-6  mb-3">Plateforme numérique des données environnementales de produits mécanique</p>
+    <a href="{% url 'acces' %}" class="btn  rounded-pill main-btn">Se connecter</a>
+  </div>
+</article>
+</br>
+</div>
+
+
+
+
+
+ 
+{% endblock %}
+

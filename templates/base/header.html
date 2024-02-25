@@ -1,0 +1,117 @@
+
+{% load static %}
+
+
+
+<style>
+
+ .text-decoration-none .text{
+  font-size: 56px;
+  font-weight: 600;
+  color: white;
+}
+
+.maine-btn{
+    background-color:#33d1cc;
+    color: #eff7fa;
+    padding: 0.7rem 1.2rem;
+}
+
+.maine-btn:hover{
+    background-color: #ff3150;
+}
+
+.navbar{
+    background-color:#19283f;
+    
+}
+
+.navbar .navbar-nav .nav-link{
+    color: white;
+}
+
+.navbar .navbar-nav .nav-link:active,
+.navbar .navbar-nav .nav-link:focus,
+.navbar .navbar-nav .nav-link:hover{
+    color:#33d1cc;
+}
+
+.navbar .search{
+    border-left: 1px solid #33d1cc;
+}
+
+.navbar .search svg{
+    color:#33d1cc;
+}
+
+.navbar .navbar-toggler{
+    color: white;
+    font-size:25px;
+    border-color: white;
+}
+
+.navbar .navbar-toggler:focus{
+    box-shadow: none;
+}
+
+.navbar-brand{
+    background-color: white!important;
+}
+
+.nav-link{
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar-expand-lg .navbar-nav{
+    margin: 0px 20px;
+}
+
+.navbar .navbar-toggler[aria-expanded="true"]{
+    border-color: var(--green-color);
+}
+    </style>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container ">
+          <a class="navbar-brand" href="#" >
+            <a class="text-decoration-none" href="{% url 'index' %}"><span class="text" style="color:#90EE90;">EcoMecA</span></a>
+            <!-- <img src="{% static 'img/even.jpg' %}" height="100px" alt=""> -->
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main" aria-controls="main"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="main">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              
+                <!-- {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <div class="nav-link p-2 p-lg-3">Bonjour {{firsname}}</div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link p-2 p-lg-3" href="{% url 'logout' %}">Déconnexion</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                  <a class="nav-link p-2 p-lg-3" href="{% url 'acces' %}">Connexion</a>
+                </li>
+                {% endif %} -->
+                
+              <li class="nav-item">
+                <a class="nav-link p-2 p-lg-3 active" aria-current="page" href="{% url 'index' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link p-2 p-lg-3" href="{% url 'about' %}">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link p-2 p-lg-3" href="{% url 'inscription' %}">S'inscrire</a>
+              </li>
+            </ul>
+            <div class="search ps-3 pe-3 d-none d-lg-block">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <a href="{% url 'acces' %}" class="btn  rounded-pill maine-btn">Connexion</a>
+          </div>
+        </div>
+      </nav>
+

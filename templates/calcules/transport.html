@@ -1,0 +1,77 @@
+{% extends 'bare.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+<style>
+  .sidebar.close ~ .home-section{
+    height: auto;
+  }
+  .home-section{
+    height: auto;
+  }
+</style>
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/page.css' %}">  
+</head>
+<body>
+
+	<div class="container test">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {{susses}} {{danger}} text-center"><strong>{{message}}</strong></div>
+    {% endfor %}
+    {% endif %}
+		
+    <form method="post" >
+      {% csrf_token %}
+        <div class="d-flex justify-content-center">
+            <h3 id="form-title"><strong>Calcule sur le transport</strong></h3>
+        </div>
+
+    <div class="form-group mb-4">
+    <label for="transport">Choisissez le moyen de transport :</label>
+    <select class="form-control mt-2" id="transport" name="choix">
+      <option value="Da002">Avion moyen courrier, transport</option>
+      <option value="Db001">Bateau, transport océanique de marchandises - Monde</option>
+      <option value="Db002">Péniche, transport de marchandises - Europe</option>
+      <option value="Dc001">Camion 16 à 32t - Europe</option>
+      <option value="Dd001">Train, transport de marchandises - Europe</option>
+      <option value="Dz001">Scénario de transport aérien - Approvisionnement en France depuis la Chine</option>
+      <option value="Dz002">Scénario de transport maritime - Approvisionnement en France depuis la Chine</option>
+      <option value="Dz003">Scénario de transport aérien - Approvisionnement en France depuis l'Inde</option>
+      <option value="Dz004">Scénario de transport maritime - Approvisionnement en France depuis l'Inde</option>
+    </select>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="transport">Indiquer la distance de transport (Km) :</label>
+      <div class="d-flex">
+        <input class="form-control mt-2" type="text" name="quantite" id="quantite" style="margin-right:40px;">
+        <!-- <input class="btn btn-primary" type="submit" value="Valider" name="kg" style="padding-left: 1.2rem; padding-right: 1.2rem;"> -->
+       </div>
+     </div>
+    
+    
+    <div class="form-group mb-4">
+      <label for="excel">Donnez un nom au fichier excel dans lequel vous souhaitez enregistrer vos tableaux :</label>
+      <div class="d-flex">
+        <input class="form-control mt-2" type="text" name="nom_fich" id="excel" style="margin-right:40px;">
+        <input class="btn btn-primary" type="submit" value="Générer le fichier" name="fichier" style="padding-left: 1.2rem; padding-right: 1.2rem;">
+      </div>
+    </div>
+  
+  </form>
+
+  </div>
+
+
+
+  
+</body>
+
+
+{% endblock %}

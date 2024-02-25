@@ -1,0 +1,97 @@
+.navbar-brand{
+    background-color: greenyellow;
+}
+
+form{
+    background-color: rgb(235, 232, 229);
+   padding: 4%;
+   margin: 3%;
+  
+   
+}
+
+ 
+form .form-input{
+    margin-right: 5%;
+    width: 30%;
+    height: 30%;
+}
+form .form-button{
+    width: 10%;
+    background-color: darkkhaki;
+    border-radius: 8px;
+    color: black;
+    transition: transform 200ms , box-shadow 200ms;    
+}
+form .form-button:active{
+    transform: translateY(4px) translateX(4px);
+    box-shadow: darkkhaki 0px 0px 0px ; 
+}
+
+form .class-input{
+    width:50% ;
+}
+
+form .class-button{
+    width: 40%;
+    background-color: darkkhaki;
+    border-radius: 8px;
+    color: black;
+    margin-left: 12%;
+    margin-top: 1%;
+    transition: transform 200ms , box-shadow 200ms;
+
+}
+form .class-button:active{
+    transform: translateY(4px) translateX(4px);
+box-shadow: darkkhaki 0px 0px 0px ;
+}
+
+form .form-option {
+    margin-left: 30%;
+}
+
+select{
+    width: 50%;
+    margin-right: 40%;
+}
+
+footer{
+   
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(186, 238, 144);
+    height: auto;
+    width: 100vw;
+    padding-top: 10px;
+    color: black;
+}
+
+.footer-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.footer-content h3{
+  font-size: 2.1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  line-height: 3rem;
+}
+
+
+
+.footer-content p{
+  max-width: 800px;
+  margin: 10px auto;
+  line-height: 28px;
+  font-size: 12px;
+  color: black;
+}
+footer{
+  margin-top: 5%;
+}

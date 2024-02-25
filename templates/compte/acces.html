@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+	{% load static %}
+
+	<!DOCTYPE html>
+	<html lang="en">
+	
+	<head>
+	  <meta charset="UTF-8">
+	  <link rel="stylesheet" href="{% static 'bootstrap/css_boot/bootstrap.min.css' %}">
+	  <link rel="stylesheet" href="{% static 'bootstrap/css_boot/all.min.css' %}">
+	  <link rel="stylesheet" href="{% static 'bootstrap/css_boot/style.css' %}">
+	  <link rel="preconnect" href="https://fonts.googleapis.com">
+	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,100;1,300&display=swap"
+		rel="stylesheet">
+	   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+
+	<style>
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: #b1ebe8 !important;
+		}
+		.user_card {
+			width: 650px;
+			margin-top: auto;
+			margin-bottom: auto;
+			background: #33d1cc;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+
+		}
+
+		.form_container {
+			margin-top: 5px;
+		}
+
+		#form-title{
+			color: #fff;
+            font-size: 40px;
+		}
+
+		.login_btn {
+			width: 100%;
+			background: #293ad3 !important;
+			color: white !important;
+			padding: 10px;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+		.input-group-text {
+			background: #f7ba5b !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+			height: 40px;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+
+		#messages{
+			background-color: grey;
+			color: #fff;
+			padding: 10px;
+			margin-top: 10px;
+		}
+        
+		.input-group{
+			width: 500px;
+		}
+
+		.is-invalid{
+			border: 3px solid red;
+		}
+
+		.test{
+			margin-top: 100px;
+			margin-bottom: 100px;
+		}
+		
+		
+	</style>
+
+</head>
+<body>
+
+	{% include 'base/header.html' %}
+	<div class="container test">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+                    <h3 id="form-title"><strong>LOGIN</strong></h3>
+				</div>
+				<div class="col-md-12 mt-2">
+					{% if messages %}
+					{% for message in messages %}
+					<div class="alert {{danger}} {{susses}} text-center"><strong>{{message}}</strong></div>
+					{% endfor %}
+					{% endif %}
+				</div>
+				<div class="d-flex justify-content-center form_container">
+
+					<form method="POST" action="/compte/acces">
+						{% csrf_token %}
+
+						<!-- {% if form.username.errors %}
+						   {% for error in form.username.errors %}
+							   <div><small class="text-danger">Ce champ est oubligatoir</small></div>
+						   {% endfor %}
+						{% endif %} -->
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" name="username" placeholder="Username..." class="form-control {{classe}}">
+							<!-- {{form.username}} -->
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+								<input type="password" name="password" placeholder="Password..." class="form-control {{classe}}" > 
+								<!-- {{form.password}} -->
+								
+						</div>
+
+							<div class="d-flex justify-content-center mt-3 login_container">
+				 				<input class="btn login_btn rounded-pill" type="submit" value="Connecté">
+				   			</div>
+					</form>
+
+				</div>
+
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						vous n'avez pas un compte ?<a href="{% url 'inscription' %}" class="ml-2">S'inscrire</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+	</div>
+
+	<script>
+						
+		var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder="Nom d'utilisateur..";
+		form_fields[2].placeholder='mot de passe..';
+
+
+		for (var field in form_fields){
+			form_fields[field].className += ' form-control'
+
+        }
+
+		
+		$(document).ready(function(){
+			$('input').keyup(function(){
+				let textSaisie = $(this).val();
+				if(textSaisie == ""){
+					if(!$(this).hasClass('is-invalid')){
+						$(this).addClass('is-invalid');
+					}
+				} else {
+					$(this).removeClass('is-invalid');
+				}
+			})
+		})
+		
+	</script>
+
+
+<script src="{% static 'bootstrap/js_boot/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'bootstrap/js_boot/all.min.js' %}"></script>
+
+</body>
+
+</html>
+{% include 'base/footer.html' %}

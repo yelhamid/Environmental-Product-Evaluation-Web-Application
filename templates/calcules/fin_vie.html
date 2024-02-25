@@ -1,0 +1,70 @@
+{% extends 'bare.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+<style>
+  .sidebar.close ~ .home-section{
+    height: auto;
+  }
+  .home-section{
+    height: auto;
+  }
+</style>
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/page.css' %}">  
+</head>
+<body>
+
+	<div class="container test">
+    {% if messages %}
+					{% for message in messages %}
+					<div class="alert {{susses}} {{danger}} text-center"><strong>{{message}}</strong></div>
+					{% endfor %}
+					{% endif %}
+		
+    <form method="post" >
+      {% csrf_token %}
+        <div class="d-flex justify-content-center">
+            <h3 id="form-title"><strong>Calcule sur la fin de vie des éléments</strong></h3>
+        </div>
+
+    <div class="form-group mb-4">
+    <label for="fin_vie">Quel est le scénario de fin de vie :</label>
+    <select class="form-control mt-2" id="fin_vie" name="choix">
+      <option value="Ez004">Scénario de fin de vie - Acier</option>
+      <option value="Ez005">Scénario de fin de vie - Aluminium</option>
+      <option value="Ez007">Scénario de fin de vie - Plastiques</option>
+    </select>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="quantite">Quelle quantités (Kg) ? :</label>
+      <div class="d-flex">
+      <input class="form-control mt-2" type="text" name="quantite" id="quantite" style="margin-right:40px;">
+      <!-- <input class="btn btn-primary" type="submit" value="Valider" name="kg" style="padding-left: 1.2rem; padding-right: 1.2rem;"> -->
+       </div>
+     </div>
+
+    <div class="form-group mb-4">
+      <label for="excel">Donnez un nom au fichier excel dans lequel vous souhaitez enregistrer vos tableaux :</label>
+      <div class="d-flex">
+        <input class="form-control mt-2" type="text" name="nom_fich" id="excel" style="margin-right:40px;">
+      <input class="btn btn-primary" type="submit" value="Générer le fichier" name="fichier" style="padding-left: 1.2rem; padding-right: 1.2rem;">
+      </div>
+    </div>
+  
+  </form>
+
+  </div>
+
+
+
+  
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,11 @@
+
+
+{% autoescape off %}
+
+
+bonjour {{ name }} {{ lastname }} , merci de votre inscription.
+
+Confirmer Votre adresse email en cliquant sur le lien suivent
+
+lien :  https//{{domain}}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}
